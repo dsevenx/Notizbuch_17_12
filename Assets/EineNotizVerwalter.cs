@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class EineNotizVerwalter : MonoBehaviour
 {
     // Überschrift
-    public RectTransform mInputFieldUeberschrift_RectTransform;
 
     public TMP_InputField mInputFieldUeberschrift_TMP;
 
-    public TextMeshProUGUI mUeberschriftText;
+    public TMP_InputField mInputFieldNotiztext_TMP;
 
     // moeglische Überschriften
     public GameObject mButton_01;
@@ -27,27 +27,35 @@ public class EineNotizVerwalter : MonoBehaviour
 
     private List<string> mAlleUeberschriften = new List<string>();
 
-    // Notiz selbst
+    public NotizBuchBL mNotizBuchBL;
 
-    public RectTransform mInputFieldNotiz_RectTransform;
-
-    public TMP_InputField mInputFieldNotiz_TMP;
-
-    public TextMeshProUGUI mNotizText;
+    public Boolean mStarterfolgreich = false;
 
     void Start()
     {
-        mAlleUeberschriften = new List<string>();
-        mAlleUeberschriften.Add("Latain");
-        mAlleUeberschriften.Add("Mathe");
-        mAlleUeberschriften.Add("Hase");
-        mAlleUeberschriften.Add("Kaputt");
-        mAlleUeberschriften.Add("nox");
-        mAlleUeberschriften.Add("nix");
-        mAlleUeberschriften.Add("fix");
+        mStarterfolgreich = false;
+    }
+    void Update()
+    {
+        if (mNotizBuchBL.istEingelesen())
+        {
+            mAlleUeberschriften = new List<string>();
+            mAlleUeberschriften.Add("Latain");
+            mAlleUeberschriften.Add("Mathe");
+            mAlleUeberschriften.Add("Hase");
+            mAlleUeberschriften.Add("Kaputt");
+            mAlleUeberschriften.Add("nox");
+            mAlleUeberschriften.Add("nix");
+            mAlleUeberschriften.Add("fix");
 
-        mInputFieldUeberschrift_TMP.onValueChanged.AddListener(PopulateOptions);
-        PopulateOptions("");
+            mInputFieldUeberschrift_TMP.onValueChanged.AddListener(PopulateOptions);
+
+            mInputFieldUeberschrift_TMP.text = mNotizBuchBL.getAktiveNotiz().GetUebeschrift();
+            mInputFieldNotiztext_TMP.text = mNotizBuchBL.getAktiveNotiz().GetText();
+
+            BlendeAlleButtonAus();
+            mStarterfolgreich = true;
+        }
     }
 
     void PopulateOptions(string pText)
@@ -99,7 +107,19 @@ public class EineNotizVerwalter : MonoBehaviour
     public void OnOptionSelected(TextMeshProUGUI pTextMeshProUGUI)
     {
         mInputFieldUeberschrift_TMP.text = pTextMeshProUGUI.text;
+        SetzeUeberschriftAktiveNotiz(pTextMeshProUGUI.text);
 
         BlendeAlleButtonAus();
+    }
+
+    public void SetzeUeberschriftAktiveNotiz(string pUeberschrift)
+    {
+        mInputFieldUeberschrift_TMP.text = pUeberschrift;
+        mNotizBuchBL.SetzeUeberschriftAktiveNotiz(pUeberschrift);
+    }
+    public void SetzeTextAktiveNotiz(string pText)
+    {
+        mInputFieldNotiztext_TMP.text = pText;
+        mNotizBuchBL.SetzeTextAktiveNotiz(pText);
     }
 }

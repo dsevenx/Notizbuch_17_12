@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class EineNotiz : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class EineNotiz : MonoBehaviour
 
     private float mRelevanteBreiteAnker;
     private int mBasisSchrifthoehe;
+
+    private Notizverwalter mNotizverwalter;
+
+    private int mID; 
 
     void Update()
     {
@@ -65,19 +70,34 @@ public class EineNotiz : MonoBehaviour
 
             // Schriftgrösse
             mNotizUeberschriftText.fontSize = mBasisSchrifthoehe * 1.1f;
-            mNotizDatumText.fontSize = mBasisSchrifthoehe;
+            mNotizDatumText.fontSize = mBasisSchrifthoehe*0.9f;
             mNotizTextText.fontSize = mBasisSchrifthoehe * 0.7f;
             motizButtonPapierkorbText.fontSize = mBasisSchrifthoehe *.74f;
             mNotizButtonBearbeitenText.fontSize = mBasisSchrifthoehe*.74f;
         }
     }
 
-    public void Initialisiere(int pRelevanteBreite, int pRelevanteHoehe, int pBasisTextverschiebung, float pRelevanteBreiteAnker, int pBasisSchrifthoehe)
+    public void Initialisiere(int pRelevanteBreite, int pRelevanteHoehe, int pBasisTextverschiebung, float pRelevanteBreiteAnker,  
+    int pBasisSchrifthoehe, string pUeberschrift, string pDatum, string pText,  Notizverwalter pNotizverwalter, int pID)
     {
         mRelevanteBreite = pRelevanteBreite;
         mRelevanteHoehe = pRelevanteHoehe;
         mBasisTextverschiebung = pBasisTextverschiebung;
         mRelevanteBreiteAnker = pRelevanteBreiteAnker;
         mBasisSchrifthoehe = pBasisSchrifthoehe;
-    }
+        
+        mNotizUeberschriftText.text = pUeberschrift;
+        mNotizDatumText.text = pDatum;
+        mNotizTextText.text = pText;
+        mNotizverwalter = pNotizverwalter;
+        mID = pID;
+   }
+
+   public void KlickeBearbeiten() {
+       mNotizverwalter.KlickeBearbeiten(mID);
+   }
+
+    public void KlickeLoeschen() {
+       mNotizverwalter.KlickeLoeschen(mID);
+   }
 }

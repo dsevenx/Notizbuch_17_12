@@ -8,39 +8,39 @@ public class NotizBuchBL_eineNotiz
   private readonly string K_MAX_ID_DATUM = "K_ID_NOTIZ_DATUM";
   private readonly string K_MAX_ID_TEXT = "K_ID_NOTIZ_TEXT";
 
-  int mId;
+  private int mId;
 
   public NotizBuchBL_eineNotiz(int pID)
   {
     this.mId = pID;
   }
 
-  public setText(string pText)
+  public void SetText(string pText)
   {
     PlayerPrefs.SetString(K_MAX_ID_TEXT + this.mId, pText);
   }
 
-  public GetText()
+  public string GetText()
   {
     return PlayerPrefs.GetString(K_MAX_ID_TEXT + this.mId);
   }
 
-  public setDatum(string pDatum)
+  public void SetDatum(string pDatum)
   {
-    PlayerPrefs.SetString(K_MAX_ID_DATUMT + this.mId, pDatum);
+    PlayerPrefs.SetString(K_MAX_ID_DATUM + this.mId, pDatum);
   }
 
-  public GetDatum()
+  public string GetDatum()
   {
     return PlayerPrefs.GetString(K_MAX_ID_DATUM + this.mId);
   }
 
-  public setUebeschrift(string pDatum)
+  public void SetUebeschrift(string pDatum)
   {
     PlayerPrefs.SetString(K_MAX_ID_UEBERSCHRIFT + this.mId, pDatum);
   }
 
-  public GetUebeschrif()
+  public string GetUebeschrift()
   {
     return PlayerPrefs.GetString(K_MAX_ID_UEBERSCHRIFT + this.mId);
   }

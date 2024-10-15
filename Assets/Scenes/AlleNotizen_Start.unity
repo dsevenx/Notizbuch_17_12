@@ -339,7 +339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 185478425}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 655890113}
+        m_TargetAssemblyTypeName: Notizverwalter, Assembly-CSharp
+        m_MethodName: LoadSceneEineNotiz
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &185478425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +840,8 @@ MonoBehaviour:
   contentTransform: {fileID: 840573266}
   mAufloesungskuemmer: {fileID: 676526514}
   mVerticalLayoutGroup: {fileID: 840573267}
-  numberOfObjects: 2
+  mNotizBuchBL: {fileID: 1433884151}
+  mBildaktualisiert: 0
 --- !u!4 &655890114
 Transform:
   m_ObjectHideFlags: 0
@@ -1265,6 +1278,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268865341}
   m_CullTransparentMesh: 1
+--- !u!1 &1433884150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433884152}
+  - component: {fileID: 1433884151}
+  m_Layer: 0
+  m_Name: NotizBuchBL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1433884151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433884150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2149902e385847419a5c0a51986fbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1433884152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433884150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1495.4666, y: 2428.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448285304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,6 +1495,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 676526515}
+  - {fileID: 1433884152}
   - {fileID: 1194166360}
   - {fileID: 228703362}
   - {fileID: 655890114}

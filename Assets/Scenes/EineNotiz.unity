@@ -220,7 +220,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 32
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -241,7 +241,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 647134327}
+        m_TargetAssemblyTypeName: EineNotizVerwalter, Assembly-CSharp
+        m_MethodName: SetzeUeberschriftAktiveNotiz
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1177,9 +1189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ba05b5da3c14fc7a4d37f21d685cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mInputFieldUeberschrift_RectTransform: {fileID: 0}
   mInputFieldUeberschrift_TMP: {fileID: 50686378}
-  mUeberschriftText: {fileID: 2061223040}
+  mInputFieldNotiztext_TMP: {fileID: 662288520}
   mButton_01: {fileID: 790919838}
   mButton_01_Text: {fileID: 1670966276}
   mButton_02: {fileID: 1069728013}
@@ -1188,9 +1199,8 @@ MonoBehaviour:
   mButton_03_Text: {fileID: 1595958477}
   mButton_04: {fileID: 1387287742}
   mButton_04_Text: {fileID: 155288812}
-  mInputFieldNotiz_RectTransform: {fileID: 0}
-  mInputFieldNotiz_TMP: {fileID: 662288520}
-  mNotizText: {fileID: 958997841}
+  mNotizBuchBL: {fileID: 1101411971}
+  mStarterfolgreich: 0
 --- !u!4 &647134328
 Transform:
   m_ObjectHideFlags: 0
@@ -1458,7 +1468,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 647134327}
+        m_TargetAssemblyTypeName: EineNotizVerwalter, Assembly-CSharp
+        m_MethodName: SetzeTextAktiveNotiz
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1985,6 +2007,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069728013}
   m_CullTransparentMesh: 1
+--- !u!1 &1101411970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101411972}
+  - component: {fileID: 1101411971}
+  m_Layer: 0
+  m_Name: NotizBuchBL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1101411971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101411970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2149902e385847419a5c0a51986fbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1101411972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101411970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1495.4666, y: 2428.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194166356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,6 +3379,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 676526515}
+  - {fileID: 1101411972}
   - {fileID: 1194166360}
   - {fileID: 228703362}
   - {fileID: 647134328}

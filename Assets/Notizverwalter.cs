@@ -15,14 +15,24 @@ public class Notizverwalter : MonoBehaviour
 
     public VerticalLayoutGroup mVerticalLayoutGroup;
 
+    public NotizBuchBL mNotizBuchBL;
 
-    public int numberOfObjects;
+    public Boolean mBildaktualisiert = false;
 
+    void Start()
+    {
+        mBildaktualisiert = false;
+    }
     void Update()
     {
-        if (mAufloesungskuemmer.IstFertig() && numberOfObjects > 0)
+        if (mAufloesungskuemmer.IstFertig() && mNotizBuchBL.istEingelesen() && !mBildaktualisiert)
         {
-            for (int i = 0; i < numberOfObjects; i++)
+            foreach (Transform child in contentTransform)
+            {
+                Destroy(child.gameObject);
+            }
+            
+            foreach (KeyValuePair<int, NotizBuchBL_eineNotiz> lKeyValuePair in mNotizBuchBL.mDictionaryAlleNoitzen)
             {
                 GameObject newObjectVonEineNoitz = Instantiate(objectPrefabEineNotizBeispiel);
 
@@ -32,26 +42,42 @@ public class Notizverwalter : MonoBehaviour
                 newObjectVonEineNoitz.transform.localPosition = Vector3.zero; // Position zurücksetzen
                 newObjectVonEineNoitz.transform.localRotation = Quaternion.identity; // Rotation zurücksetzen
 
-                newObjectVonEineNoitz.name = "NotizInstanz_" + i;
+                newObjectVonEineNoitz.name = "NotizInstanz_" + lKeyValuePair.Key;
 
-                EineNotiz lEineNoitzBeispiel = newObjectVonEineNoitz.GetComponent<EineNotiz>();
+                EineNotiz lEineNotizAufUebersichtsbild = newObjectVonEineNoitz.GetComponent<EineNotiz>();
 
-                lEineNoitzBeispiel.Initialisiere(mAufloesungskuemmer.mRelevanteBreiteEineNotiz,
+                lEineNotizAufUebersichtsbild.Initialisiere(mAufloesungskuemmer.mRelevanteBreiteEineNotiz,
                 mAufloesungskuemmer.mRelevanteHoeheEineNotiz,
                 mAufloesungskuemmer.mBasisTextverschiebung,
                 mAufloesungskuemmer.mRelevanteBreiteEineNotizAnker,
-                mAufloesungskuemmer.mBasisSchrifthoehe
+                mAufloesungskuemmer.mBasisSchrifthoehe,
+                lKeyValuePair.Value.GetUebeschrift(),
+                lKeyValuePair.Value.GetDatum(),
+                lKeyValuePair.Value.GetText(),this,lKeyValuePair.Key
                 );
 
                 mVerticalLayoutGroup.spacing = mAufloesungskuemmer.mAbstandzwischenNotizen;
             }
 
-            numberOfObjects=0;
+            mBildaktualisiert=true;
         }
     }
 
     public void LoadSceneEineNotiz()
     {
+        mNotizBuchBL.NeueNotiz();
+        SceneManager.LoadScene("EineNotiz");
+    }
+
+    internal void KlickeLoeschen(int pID)
+    {
+       mNotizBuchBL.LoescheNotiz(pID);
+       mBildaktualisiert=false;
+    }
+
+    internal void KlickeBearbeiten(int pID)
+    {
+        mNotizBuchBL.SetzeAktiveNotiz(pID);
         SceneManager.LoadScene("EineNotiz");
     }
 }
