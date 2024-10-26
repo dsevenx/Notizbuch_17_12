@@ -32,7 +32,7 @@ public class Notizverwalter : MonoBehaviour
                 Destroy(child.gameObject);
             }
             
-            foreach (KeyValuePair<int, NotizBuchBL_eineNotiz> lKeyValuePair in mNotizBuchBL.mDictionaryAlleNoitzen)
+            foreach (KeyValuePair<int, NotizBuchBL_eineNotiz> lKeyValuePair in mNotizBuchBL.mDictionaryAlleNotizen)
             {
                 GameObject newObjectVonEineNoitz = Instantiate(objectPrefabEineNotizBeispiel);
 
@@ -69,6 +69,10 @@ public class Notizverwalter : MonoBehaviour
         SceneManager.LoadScene("EineNotiz");
     }
 
+    public void LoadSceneEinstellungen()
+    {
+        SceneManager.LoadScene("Einstellungen");
+    }
     internal void KlickeLoeschen(int pID)
     {
        mNotizBuchBL.LoescheNotiz(pID);

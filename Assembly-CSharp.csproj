@@ -64,15 +64,19 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/AufloesungskuemmerEinstellungen.cs" />
+    <Compile Include="Assets/VerwalterEinstellungen.cs" />
+    <Compile Include="Assets/AufloesungskuemmerAlleNotizen.cs" />
     <Compile Include="Assets/AufloesungskuemmerBase.cs" />
     <Compile Include="Assets/AufloesungskuemmerEineNotitz.cs" />
-    <Compile Include="Assets/Aufloesungskuemmer.cs" />
+    <Compile Include="Assets/NotizBuchBL_eineUeberschrift.cs" />
+    <Compile Include="Assets/NotizBuchBL_eineAbkuerzung.cs" />
     <Compile Include="Assets/NotizBuchBL.cs" />
-    <Compile Include="Assets/Notizverwalter.cs" />
     <Compile Include="Assets/EineNotiz.cs" />
     <Compile Include="Assets/NotizBuchBL_eineNotiz.cs" />
-    <Compile Include="Assets/EineNotizVerwalter.cs" />
+    <Compile Include="Assets/VerwalterEineNotiz.cs" />
     <Compile Include="Assets/ZurueckZurStartszene.cs" />
+    <Compile Include="Assets/VerwalterAlleNotizen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
