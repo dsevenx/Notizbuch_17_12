@@ -7,9 +7,11 @@ public class AufloesungskuemmerEinstellungen : AufloesungskuemmerBase
 {
     public RectTransform mInputFieldUeberschriften_RectTransform;
     public TextMeshProUGUI mUeberschriftenText;
+    public TextMeshProUGUI mUeberschriftenTexPlaceholder;
 
     public RectTransform mInputFieldAbkuerzungen_RectTransform;
     public TextMeshProUGUI mAbkuerzungenText;
+    public TextMeshProUGUI mAbkuerzungenTextPlaceholder;
 
    public RectTransform mDropDownFormate_RectTransform;
   
@@ -35,8 +37,14 @@ public class AufloesungskuemmerEinstellungen : AufloesungskuemmerBase
         mUeberschriftenText.fontSize = mBasisSchrifthoehe * 1.05f;
         setzeLinksverschiebung(mUeberschriftenText);
 
+        mUeberschriftenTexPlaceholder.fontSize = mBasisSchrifthoehe * 1.05f;
+        setzeLinksverschiebung(mUeberschriftenTexPlaceholder);
+
         mAbkuerzungenText.fontSize = mBasisSchrifthoehe * 1.05f;
         setzeLinksverschiebung(mAbkuerzungenText);
+
+        mAbkuerzungenTextPlaceholder.fontSize = mBasisSchrifthoehe * 1.05f;
+        setzeLinksverschiebung(mAbkuerzungenTextPlaceholder);
   }
 
 }

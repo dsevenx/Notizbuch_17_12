@@ -10,6 +10,7 @@ public class NotizBuchBL_eineNotiz
 
   private int mId;
 
+
   public NotizBuchBL_eineNotiz(int pID)
   {
     this.mId = pID;
@@ -35,9 +36,9 @@ public class NotizBuchBL_eineNotiz
     return PlayerPrefs.GetString(K_MAX_ID_DATUM + this.mId);
   }
 
-  public void SetUebeschrift(string pDatum)
+  public void SetUebeschrift(string pText)
   {
-    PlayerPrefs.SetString(K_MAX_ID_UEBERSCHRIFT + this.mId, pDatum);
+    PlayerPrefs.SetString(K_MAX_ID_UEBERSCHRIFT + this.mId, pText);
   }
 
   public string GetUebeschrift()

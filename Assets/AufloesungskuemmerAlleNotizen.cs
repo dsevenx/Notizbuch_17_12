@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Aufloesungskuemmer : AufloesungskuemmerBase
+public class AufloesungskuemmerAlleNotizen : AufloesungskuemmerBase
 {
     public int mRelevanteHoeheEineNotiz;
 

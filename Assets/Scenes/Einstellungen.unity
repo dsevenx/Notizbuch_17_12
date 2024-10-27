@@ -214,13 +214,13 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 2
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 32
+  m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -242,9 +242,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EineNotizVerwalter, Assembly-CSharp
-        m_MethodName: SetzeUeberschriftAktiveNotiz
+      - m_Target: {fileID: 1101411971}
+        m_TargetAssemblyTypeName: NotizBuchBL, Assembly-CSharp
+        m_MethodName: SetzeUeberschriften
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -260,7 +260,17 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: 'Informatik
+
+    Mathe
+
+    Boxen
+
+    Schwimmen
+
+    Latain
+
+'
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -323,7 +333,7 @@ GameObject:
   - component: {fileID: 105727130}
   - component: {fileID: 105727129}
   m_Layer: 5
-  m_Name: Placeholder
+  m_Name: PlaceholderAbkuerzungen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hier Notiztext eingeben ...
+  m_text: "1H: eine halbe Stunde lernen\nXX: M\xFCll rausbringen\nY1: aufr\xE4umen"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1580,6 +1590,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e603bf5532403402fb5aae923e2626ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAufloesungskuemmerEinstellungen: {fileID: 676526516}
+  mNotizBuchBL: {fileID: 1101411971}
+  mUberschriftenTMP_InputField: {fileID: 50686378}
+  mAbkuerzungenTMP_InputField: {fileID: 662288520}
+  mBildaktualisiert: 0
 --- !u!1 &647682278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,9 +1848,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EineNotizVerwalter, Assembly-CSharp
-        m_MethodName: SetzeTextAktiveNotiz
+      - m_Target: {fileID: 1101411971}
+        m_TargetAssemblyTypeName: NotizBuchBL, Assembly-CSharp
+        m_MethodName: SetzeAbkuerzungen
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1851,9 +1866,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 'erste Zeile
-
-    zweite Zeile'
+  m_Text: "1H: eine halbe Stunde lernen\nXX: M\xFCll rausbringen\nY1: aufr\xE4umen"
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -1863,7 +1876,7 @@ MonoBehaviour:
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
-  m_LineLimit: 0
+  m_LineLimit: 50
   m_InputValidator: {fileID: 0}
 --- !u!114 &662288521
 MonoBehaviour:
@@ -1961,8 +1974,10 @@ MonoBehaviour:
   mScreenHeight: 0
   mInputFieldUeberschriften_RectTransform: {fileID: 50686377}
   mUeberschriftenText: {fileID: 2061223040}
+  mUeberschriftenTexPlaceholder: {fileID: 1206441858}
   mInputFieldAbkuerzungen_RectTransform: {fileID: 662288519}
   mAbkuerzungenText: {fileID: 958997841}
+  mAbkuerzungenTextPlaceholder: {fileID: 105727130}
   mDropDownFormate_RectTransform: {fileID: 229124815}
 --- !u!1 &797456199
 GameObject:
@@ -2258,7 +2273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "erste Zeile\nzweite Zeile\u200B"
+  m_text: "1H: eine halbe Stunde lernen\nXX: M\xFCll rausbringen\nY1: aufr\xE4umen\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2408,6 +2423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2149902e385847419a5c0a51986fbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAlleAbkuerzungen: 
+  mAlleUeberschriften: 
 --- !u!4 &1101411972
 Transform:
   m_ObjectHideFlags: 0
@@ -2539,7 +2556,7 @@ GameObject:
   - component: {fileID: 1206441858}
   - component: {fileID: 1206441857}
   m_Layer: 5
-  m_Name: Placeholder
+  m_Name: PlaceholderUeberschrift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2591,7 +2608,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206441855}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3363,7 +3380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "Informatik\nMathe\nBoxen\nSchwimmen\nLatain\n\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3398,7 +3415,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3406,7 +3423,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

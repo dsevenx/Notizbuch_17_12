@@ -37,16 +37,9 @@ public class EineNotizVerwalter : MonoBehaviour
     }
     void Update()
     {
-        if (mNotizBuchBL.istEingelesen())
+        if (mNotizBuchBL.istEingelesen() && !mStarterfolgreich) 
         {
-            mAlleUeberschriften = new List<string>();
-            mAlleUeberschriften.Add("Latain");
-            mAlleUeberschriften.Add("Mathe");
-            mAlleUeberschriften.Add("Hase");
-            mAlleUeberschriften.Add("Kaputt");
-            mAlleUeberschriften.Add("nox");
-            mAlleUeberschriften.Add("nix");
-            mAlleUeberschriften.Add("fix");
+            mAlleUeberschriften = mNotizBuchBL.LieferUerberschriftenAusString();
 
             mInputFieldUeberschrift_TMP.onValueChanged.AddListener(PopulateOptions);
 
@@ -62,7 +55,7 @@ public class EineNotizVerwalter : MonoBehaviour
     {
         BlendeAlleButtonAus();
 
-        if (pText.Length > 0)
+        if (pText.Length > 0 && !mNotizBuchBL.IstUeberschriftVorhanden(pText))
         {
 
             int lButton = 0;
@@ -119,7 +112,10 @@ public class EineNotizVerwalter : MonoBehaviour
     }
     public void SetzeTextAktiveNotiz(string pText)
     {
-        mInputFieldNotiztext_TMP.text = pText;
-        mNotizBuchBL.SetzeTextAktiveNotiz(pText);
+        string lErsetzteText = mNotizBuchBL.BeachteAbkuerzungen(pText);
+        mInputFieldNotiztext_TMP.text = lErsetzteText;
+        mInputFieldNotiztext_TMP.caretPosition = lErsetzteText.Length;
+         mInputFieldNotiztext_TMP.stringPosition = lErsetzteText.Length;
+        mNotizBuchBL.SetzeTextAktiveNotiz(lErsetzteText);
     }
 }

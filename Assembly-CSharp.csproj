@@ -69,7 +69,6 @@
     <Compile Include="Assets/AufloesungskuemmerAlleNotizen.cs" />
     <Compile Include="Assets/AufloesungskuemmerBase.cs" />
     <Compile Include="Assets/AufloesungskuemmerEineNotitz.cs" />
-    <Compile Include="Assets/NotizBuchBL_eineUeberschrift.cs" />
     <Compile Include="Assets/NotizBuchBL_eineAbkuerzung.cs" />
     <Compile Include="Assets/NotizBuchBL.cs" />
     <Compile Include="Assets/EineNotiz.cs" />
@@ -99,6 +98,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
     <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+    <None Include="Assets/test.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>

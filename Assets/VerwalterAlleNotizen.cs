@@ -11,7 +11,7 @@ public class Notizverwalter : MonoBehaviour
 
     public RectTransform contentTransform;
 
-    public Aufloesungskuemmer mAufloesungskuemmer;
+    public AufloesungskuemmerAlleNotizen mAufloesungskuemmerAlleNotizen;
 
     public VerticalLayoutGroup mVerticalLayoutGroup;
 
@@ -25,7 +25,7 @@ public class Notizverwalter : MonoBehaviour
     }
     void Update()
     {
-        if (mAufloesungskuemmer.IstFertig() && mNotizBuchBL.istEingelesen() && !mBildaktualisiert)
+        if (mAufloesungskuemmerAlleNotizen.IstFertig() && mNotizBuchBL.istEingelesen() && !mBildaktualisiert)
         {
             foreach (Transform child in contentTransform)
             {
@@ -46,17 +46,17 @@ public class Notizverwalter : MonoBehaviour
 
                 EineNotiz lEineNotizAufUebersichtsbild = newObjectVonEineNoitz.GetComponent<EineNotiz>();
 
-                lEineNotizAufUebersichtsbild.Initialisiere(mAufloesungskuemmer.mRelevanteBreiteEineNotiz,
-                mAufloesungskuemmer.mRelevanteHoeheEineNotiz,
-                mAufloesungskuemmer.mBasisTextverschiebung,
-                mAufloesungskuemmer.mRelevanteBreiteEineNotizAnker,
-                mAufloesungskuemmer.mBasisSchrifthoehe,
+                lEineNotizAufUebersichtsbild.Initialisiere(mAufloesungskuemmerAlleNotizen.mRelevanteBreiteEineNotiz,
+                mAufloesungskuemmerAlleNotizen.mRelevanteHoeheEineNotiz,
+                mAufloesungskuemmerAlleNotizen.mBasisTextverschiebung,
+                mAufloesungskuemmerAlleNotizen.mRelevanteBreiteEineNotizAnker,
+                mAufloesungskuemmerAlleNotizen.mBasisSchrifthoehe,
                 lKeyValuePair.Value.GetUebeschrift(),
                 lKeyValuePair.Value.GetDatum(),
                 lKeyValuePair.Value.GetText(),this,lKeyValuePair.Key
                 );
 
-                mVerticalLayoutGroup.spacing = mAufloesungskuemmer.mAbstandzwischenNotizen;
+                mVerticalLayoutGroup.spacing = mAufloesungskuemmerAlleNotizen.mAbstandzwischenNotizen;
             }
 
             mBildaktualisiert=true;

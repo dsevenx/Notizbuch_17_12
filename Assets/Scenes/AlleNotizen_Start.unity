@@ -850,7 +850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefabEineNotizBeispiel: {fileID: 8417760757211660443, guid: eaf8f2849d43a49c5aef9225ae8cf330, type: 3}
   contentTransform: {fileID: 840573266}
-  mAufloesungskuemmer: {fileID: 676526514}
+  mAufloesungskuemmerAlleNotizen: {fileID: 676526514}
   mVerticalLayoutGroup: {fileID: 840573267}
   mNotizBuchBL: {fileID: 1433884151}
   mBildaktualisiert: 0
@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 676526515}
   - component: {fileID: 676526514}
   m_Layer: 0
-  m_Name: Aufloesungskuemmer
+  m_Name: AufloesungskuemmerAlleNotizen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2149902e385847419a5c0a51986fbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAlleUeberschriften: 
 --- !u!4 &1433884152
 Transform:
   m_ObjectHideFlags: 0

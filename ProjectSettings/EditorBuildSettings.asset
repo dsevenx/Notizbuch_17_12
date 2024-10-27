@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EineNotiz.unity
     guid: ae0a4e539386e471587f975a7691ae1c
+  - enabled: 1
+    path: Assets/Scenes/Einstellungen.unity
+    guid: 7f2732e71d9e74e21accd79379c82513
   m_configObjects: {}

@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class NotizBuchBL_eineAbkuerzung
 {
-  private readonly string K_MAX_ID_ABK = "K_ID_ABK";
+  private string mAbk;
 
-  private int mId;
+  private string mAbkText;
 
-  public NotizBuchBL_eineAbkuerzung(int pID)
+  public NotizBuchBL_eineAbkuerzung(string pAbk, string pAbkText)
   {
-    this.mId = pID;
+    this.mAbk = pAbk;
+    this.mAbkText = pAbkText;
   }
 
-  public void SetAbkText(string pText)
+  public string getAbk()
   {
-    PlayerPrefs.SetString(K_MAX_ID_ABK + this.mId, pText);
+    return mAbk;
   }
-
-  public string GetAbkText()
+  public string getAbkText()
   {
-    return PlayerPrefs.GetString(K_MAX_ID_ABK + this.mId);
+    return mAbkText;
   }
-
-
 }

@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class NotizBuchBL : MonoBehaviour
 {
-    private const char Separator = ',';
+    private const char K_SEPARATOR_NOTIZ_ID = ',';
+    private const char K_NEW_LINE = '\n';
+
+    private const char K_ABK_Separator = ':';
+
     private readonly string K_ALLE_ABKS = "ALLE_ABKS";
     private readonly string K_ALLE_IDS = "ALLE_IDS";
 
@@ -15,17 +20,17 @@ public class NotizBuchBL : MonoBehaviour
     private readonly string K_AKTIVE_NOTIZ = "AKTIVE_NOTIZ";
     public Dictionary<int, NotizBuchBL_eineNotiz> mDictionaryAlleNotizen;
 
-    public Dictionary<int, NotizBuchBL_eineAbkuerzung> mDictionaryAlleAbkuerzungen;
+    public String mAlleAbkuerzungen;
 
-    public Dictionary<int, NotizBuchBL_eineUeberschrift> mDictionaryAlleUeberschriften;
+    public String mAlleUeberschriften;
 
     Boolean mDictionariesEingelesen = false;
 
     void Start()
     {
         mDictionaryAlleNotizen = new Dictionary<int, NotizBuchBL_eineNotiz>();
-        mDictionaryAlleAbkuerzungen = new Dictionary<int, NotizBuchBL_eineAbkuerzung>();
-        mDictionaryAlleUeberschriften = new Dictionary<int, NotizBuchBL_eineUeberschrift>();
+        mAlleAbkuerzungen = "";
+        mAlleUeberschriften = "";
 
         Einlesen();
 
@@ -55,7 +60,7 @@ public class NotizBuchBL : MonoBehaviour
             }
             lMax++;
 
-            string lAlleIDsString = PlayerPrefs.GetString(K_ALLE_IDS) + Separator + lMax;
+            string lAlleIDsString = PlayerPrefs.GetString(K_ALLE_IDS) + K_SEPARATOR_NOTIZ_ID + lMax;
 
             PlayerPrefs.SetString(K_ALLE_IDS, lAlleIDsString);
         }
@@ -82,56 +87,74 @@ public class NotizBuchBL : MonoBehaviour
     }
     private void Einlesen()
     {
+        // Noitzen einlesen
         mDictionaryAlleNotizen.Clear();
 
         string lAlleIDsStringNotiz = PlayerPrefs.GetString(K_ALLE_IDS);
 
-        string[] lAlleIDsNotiz = lAlleIDsStringNotiz.Split(Separator);
+        string[] lAlleIDsNotiz = lAlleIDsStringNotiz.Split(K_SEPARATOR_NOTIZ_ID);
 
+        List<String> lUberschriftAusNotizen = new List<string>();
         foreach (string lIDString in lAlleIDsNotiz)
         {
             int lID = ermittelID(lIDString);
-            if (lID > 0) {
-               mDictionaryAlleNotizen[lID] = new NotizBuchBL_eineNotiz(lID);
+            if (lID > 0)
+            {
+                mDictionaryAlleNotizen[lID] = new NotizBuchBL_eineNotiz(lID);
+
+                lUberschriftAusNotizen.Add(mDictionaryAlleNotizen[lID].GetUebeschrift());
             }
         }
 
-        mDictionaryAlleAbkuerzungen.Clear();
+        // Abkürzungen einlesen
+        mAlleAbkuerzungen = PlayerPrefs.GetString(K_ALLE_ABKS);
 
-        string lAlleIDsStringAbk = PlayerPrefs.GetString(K_ALLE_ABKS);
+        // Überschriften einlesen
+        mAlleUeberschriften = PlayerPrefs.GetString(K_ALLE_UEBERSCHRIFTENS);
 
-        string[] lAlleIDsABK = lAlleIDsStringAbk.Split(Separator);
+        foreach (string lUberschrift in lUberschriftAusNotizen)
+        {
+            mAlleUeberschriften = AnhaengenMitSeparator(mAlleUeberschriften, K_NEW_LINE, lUberschrift);
+        }
+
+        string lUberschriftzusammgefasst = "";
+        foreach (string lUeber in LieferUerberschriftenAusString(mAlleUeberschriften))
+        {
+            if (lUeber != "" && !IstUeberschriftVorhanden(lUeber, LieferUerberschriftenAusString(lUberschriftzusammgefasst)))
+            {
+                lUberschriftzusammgefasst = AnhaengenMitSeparator(lUberschriftzusammgefasst, K_NEW_LINE, lUeber);
+            }
+        }
+
+        SetzeUeberschriften(lUberschriftzusammgefasst);
+    }
+
+    public List<NotizBuchBL_eineAbkuerzung> LieferAbkuerzungsliste()
+    {
+        List<NotizBuchBL_eineAbkuerzung> lErg = new List<NotizBuchBL_eineAbkuerzung>();
+
+        string[] lAlleIDsABK = LieferAbkuerzugenString().Split(K_NEW_LINE);
 
         foreach (string lIDString in lAlleIDsABK)
         {
-            int lID = ermittelID(lIDString);
-            if (lID > 0) {
-                mDictionaryAlleAbkuerzungen[lID] = new NotizBuchBL_eineAbkuerzung(lID);
+            string[] lEineAbkuerzung = lIDString.Split(K_ABK_Separator);
+
+            if (lEineAbkuerzung.Count() == 2)
+            {
+                lErg.Add(new NotizBuchBL_eineAbkuerzung(lEineAbkuerzung[0].Trim(), lEineAbkuerzung[1].Trim()));
             }
         }
 
-        mDictionaryAlleUeberschriften.Clear();
-
-        string lAlleIDsStringUeberschriften = PlayerPrefs.GetString(K_ALLE_UEBERSCHRIFTENS);
-
-        string[] lAlleIDUeberschriften = lAlleIDsStringUeberschriften.Split(Separator);
-
-        foreach (string lIDString in lAlleIDUeberschriften)
-        {
-            int lID = ermittelID(lIDString);
-            if (lID > 0) {
-                mDictionaryAlleUeberschriften[lID] = new NotizBuchBL_eineUeberschrift(lID);
-            }
-        }
+        return lErg;
     }
 
     private int ermittelID(string lIDString)
     {
-         int lErg;
+        int lErg;
 
-         if (!int.TryParse(lIDString, out lErg))
+        if (!int.TryParse(lIDString, out lErg))
         {
-            lErg = 0; 
+            lErg = 0;
         }
 
         return lErg;
@@ -153,50 +176,13 @@ public class NotizBuchBL : MonoBehaviour
             }
             else
             {
-                lAlleIDString = lAlleIDString + Separator + lKeyValuePair.Key;
+                lAlleIDString = lAlleIDString + K_SEPARATOR_NOTIZ_ID + lKeyValuePair.Key;
             }
         }
 
         PlayerPrefs.SetString(K_ALLE_IDS, lAlleIDString);
 
         Einlesen();
-    }
-
-    public void ergaenzeUeberschrift(string pText)
-    {
-        int lMax = 1;
-        if (mDictionaryAlleUeberschriften.Count == 0)
-        {
-            PlayerPrefs.SetString(K_ALLE_UEBERSCHRIFTENS, "" + lMax);
-        }
-        else
-        {
-            bool lUeberschriftVorhanden = false;
-            foreach (KeyValuePair<int, NotizBuchBL_eineUeberschrift> lKeyValuePair in mDictionaryAlleUeberschriften)
-            {
-                if (lKeyValuePair.Key > lMax)
-                {
-                    lMax = lKeyValuePair.Key;
-                }
-                if (string.Equals(lKeyValuePair.Value.GetUeberschrift(), pText, StringComparison.OrdinalIgnoreCase))
-                {
-                    lUeberschriftVorhanden = true;
-                }
-            }
-
-            if (!lUeberschriftVorhanden)
-            {
-                lMax++;
-                NotizBuchBL_eineUeberschrift lNeueNotizBuchBL_eineUeberschrift = new NotizBuchBL_eineUeberschrift(lMax);
-
-                string lAlleIDsString = PlayerPrefs.GetString(K_ALLE_UEBERSCHRIFTENS) + Separator + lMax;
-
-                PlayerPrefs.SetString(K_ALLE_UEBERSCHRIFTENS, lAlleIDsString);
-
-                lNeueNotizBuchBL_eineUeberschrift.SetUeberschrift(pText);
-                mDictionaryAlleUeberschriften.Add(lMax, lNeueNotizBuchBL_eineUeberschrift);
-            }
-        }
     }
 
     internal void SetzeUeberschriftAktiveNotiz(string pUeberschrift)
@@ -207,5 +193,85 @@ public class NotizBuchBL : MonoBehaviour
     internal void SetzeTextAktiveNotiz(string pText)
     {
         getAktiveNotiz().SetText(pText);
+    }
+
+    private string AnhaengenMitSeparator(string lGesamtString, char pSeparator, string lNeu)
+    {
+        if (lGesamtString == "")
+        {
+            return lNeu;
+        }
+        else
+        {
+            return lGesamtString + pSeparator + lNeu;
+        }
+    }
+
+    internal List<string> LieferUerberschriftenAusString(string pUeberschrift)
+    {
+        List<string> lErg = new List<string>();
+
+        string[] lAlleIDUeberschriften = pUeberschrift.Split(K_NEW_LINE);
+
+        foreach (string lIDString in lAlleIDUeberschriften)
+        {
+            lErg.Add(lIDString);
+        }
+
+        return lErg;
+    }
+    internal List<string> LieferUerberschriftenAusString()
+    {
+        return LieferUerberschriftenAusString(mAlleUeberschriften);
+    }
+
+    public void SetzeUeberschriften(string pUeberschriften)
+    {
+        mAlleUeberschriften = pUeberschriften;
+        PlayerPrefs.SetString(K_ALLE_UEBERSCHRIFTENS, pUeberschriften);
+    }
+    internal string LieferUerberschriftenString()
+    {
+        return mAlleUeberschriften;
+    }
+
+
+    internal bool IstUeberschriftVorhanden(string pText, List<string> pAlleUeberschriften)
+    {
+        foreach (String lUeberschrift in pAlleUeberschriften)
+        {
+            if (lUeberschrift == pText)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    internal bool IstUeberschriftVorhanden(string pText)
+    {
+         return IstUeberschriftVorhanden(pText,LieferUerberschriftenAusString(mAlleUeberschriften));
+    }
+
+    public void SetzeAbkuerzungen(string pAbkuerzungen)
+    {
+        mAlleAbkuerzungen = pAbkuerzungen;
+        PlayerPrefs.SetString(K_ALLE_ABKS, pAbkuerzungen);
+    }
+
+    internal string LieferAbkuerzugenString()
+    {
+        return mAlleAbkuerzungen;
+    }
+
+    internal string BeachteAbkuerzungen(string pText)
+    {
+        string lText = pText;
+        foreach (NotizBuchBL_eineAbkuerzung lAbk in LieferAbkuerzungsliste()) {
+           lText = lText.Replace(lAbk.getAbk(),lAbk.getAbkText());
+           lText = lText.Replace(lAbk.getAbk().ToLower(),lAbk.getAbkText());
+           lText = lText.Replace(lAbk.getAbk().ToUpper(),lAbk.getAbkText());
+        }
+        return lText;
     }
 }
