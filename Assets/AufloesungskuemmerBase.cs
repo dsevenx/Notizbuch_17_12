@@ -66,6 +66,12 @@ public class AufloesungskuemmerBase : MonoBehaviour
        lMargin.x = mBasisTextverschiebung;
        pTextMeshProUGUI.margin = lMargin;
     }
+     public void setzeRechtsverschiebung(TextMeshProUGUI pTextMeshProUGUI)
+    {
+       Vector4 lMargin = pTextMeshProUGUI.margin;
+       lMargin.z = mBasisTextverschiebung;
+       pTextMeshProUGUI.margin = lMargin;
+    }
 
     public Boolean IstFertig()
     {

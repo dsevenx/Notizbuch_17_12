@@ -69,6 +69,7 @@
     <Compile Include="Assets/AufloesungskuemmerAlleNotizen.cs" />
     <Compile Include="Assets/AufloesungskuemmerBase.cs" />
     <Compile Include="Assets/AufloesungskuemmerEineNotitz.cs" />
+    <Compile Include="Assets/Schriftverwalter.cs" />
     <Compile Include="Assets/NotizBuchBL_eineAbkuerzung.cs" />
     <Compile Include="Assets/NotizBuchBL.cs" />
     <Compile Include="Assets/EineNotiz.cs" />
