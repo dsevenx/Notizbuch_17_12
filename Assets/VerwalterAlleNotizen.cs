@@ -19,6 +19,8 @@ public class Notizverwalter : MonoBehaviour
 
     public Boolean mBildaktualisiert = false;
 
+    public Schriftverwalter mSchriftverwalter;
+
     void Start()
     {
         mBildaktualisiert = false;
@@ -53,7 +55,7 @@ public class Notizverwalter : MonoBehaviour
                 mAufloesungskuemmerAlleNotizen.mBasisSchrifthoehe,
                 lKeyValuePair.Value.GetUebeschrift(),
                 lKeyValuePair.Value.GetDatum(),
-                lKeyValuePair.Value.GetText(),this,lKeyValuePair.Key
+                lKeyValuePair.Value.GetText(),this,lKeyValuePair.Key,mSchriftverwalter
                 );
 
                 mVerticalLayoutGroup.spacing = mAufloesungskuemmerAlleNotizen.mAbstandzwischenNotizen;

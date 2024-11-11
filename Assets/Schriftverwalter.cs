@@ -41,6 +41,11 @@ public class Schriftverwalter : MonoBehaviour
         return LieferFont(GetAktiveVersion());
     }
 
+     public string LieferFarbe()
+    {
+        return LieferFarbe(GetAktiveVersion());
+    }
+
     public int GetAktiveVersion()
     {
         return PlayerPrefs.GetInt(K_AKTIVE_VERSION);

@@ -31,6 +31,8 @@ public class EineNotiz : MonoBehaviour
 
     private int mID; 
 
+    private Schriftverwalter mSchriftverwalter;
+
     void Update()
     {
 
@@ -69,16 +71,22 @@ public class EineNotiz : MonoBehaviour
             mNotizButtonBearbeiten.anchoredPosition = new Vector2(lBreite05_12tel, 0);
 
             // Schriftgrösse
-            mNotizUeberschriftText.fontSize = mBasisSchrifthoehe * 1.1f;
+            mNotizUeberschriftText.fontSize = mBasisSchrifthoehe * 1.02f;
             mNotizDatumText.fontSize = mBasisSchrifthoehe*0.9f;
             mNotizTextText.fontSize = mBasisSchrifthoehe * 0.7f;
             motizButtonPapierkorbText.fontSize = mBasisSchrifthoehe *.74f;
             mNotizButtonBearbeitenText.fontSize = mBasisSchrifthoehe*.74f;
+            mNotizUeberschriftText.font = mSchriftverwalter.LieferFont();
+            mNotizTextText.font = mSchriftverwalter.LieferFont();
+            motizButtonPapierkorbText.font = mSchriftverwalter.LieferFont();
+            motizButtonPapierkorbText.text = mSchriftverwalter.LieferFarbe() +"Löschen";
+            mNotizButtonBearbeitenText.font = mSchriftverwalter.LieferFont();
         }
     }
 
     public void Initialisiere(int pRelevanteBreite, int pRelevanteHoehe, int pBasisTextverschiebung, float pRelevanteBreiteAnker,  
-    int pBasisSchrifthoehe, string pUeberschrift, string pDatum, string pText,  Notizverwalter pNotizverwalter, int pID)
+    int pBasisSchrifthoehe, string pUeberschrift, string pDatum, string pText,  Notizverwalter pNotizverwalter, int pID
+    ,Schriftverwalter pSchriftverwalter)
     {
         mRelevanteBreite = pRelevanteBreite;
         mRelevanteHoehe = pRelevanteHoehe;
@@ -90,6 +98,7 @@ public class EineNotiz : MonoBehaviour
         mNotizDatumText.text = pDatum;
         mNotizTextText.text = pText;
         mNotizverwalter = pNotizverwalter;
+        mSchriftverwalter = pSchriftverwalter;
         mID = pID;
    }
 

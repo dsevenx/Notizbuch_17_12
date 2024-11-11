@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2149902e385847419a5c0a51986fbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAlleAbkuerzungen: 
   mAlleUeberschriften: 
 --- !u!4 &1433884152
 Transform:
@@ -1425,6 +1426,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448285304}
   m_CullTransparentMesh: 1
+--- !u!1 &1469902802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469902804}
+  - component: {fileID: 1469902803}
+  m_Layer: 0
+  m_Name: Schriftverwalter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1469902803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469902802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaffa034e6fd34c0587d579f1976ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTMP_FontAsset_ItimRegularSDF: {fileID: 11400000, guid: 4e0c537f1c1ae475da9337f506e0ba9b, type: 2}
+  mTMP_FontAsset_DancingScript_VariableFont_wght_SDF: {fileID: 11400000, guid: 52a58a3f3e2704ec5b8c27ad23c81024, type: 2}
+  mTMP_FontAsset_FFjallaOne_Regular_SDF: {fileID: 11400000, guid: 0884987f5e3684ce88b60a1dddc61c58, type: 2}
+  mTMP_FontAsset_IBMPlexSans_Regular_SDF: {fileID: 11400000, guid: ee202486dddcb4be69203cbd86506cd6, type: 2}
+  mTMP_FontAsset_PlayfairDisplay_VariableFont_wght_SDF: {fileID: 11400000, guid: b0315fa401e8149cf9308e2246df238a, type: 2}
+--- !u!4 &1469902804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469902802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1512, y: 3513.8882, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074315129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1557,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1469902804}
   - {fileID: 676526515}
   - {fileID: 1433884152}
   - {fileID: 1194166360}

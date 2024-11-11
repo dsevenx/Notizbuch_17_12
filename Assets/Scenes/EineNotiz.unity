@@ -745,7 +745,6 @@ GameObject:
   - component: {fileID: 185478426}
   - component: {fileID: 185478425}
   - component: {fileID: 185478424}
-  - component: {fileID: 185478427}
   m_Layer: 5
   m_Name: ButtonZurueck
   m_TagString: Untagged
@@ -817,7 +816,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 185478427}
+      - m_Target: {fileID: 686268810}
         m_TargetAssemblyTypeName: ZurueckZurStartszene, Assembly-CSharp
         m_MethodName: LoadSceneStart
         m_Mode: 1
@@ -867,18 +866,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185478422}
   m_CullTransparentMesh: 1
---- !u!114 &185478427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185478422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e1a9e9c644f048efb0b8794d47ab855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &189317110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +987,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189317110}
   m_CullTransparentMesh: 1
+--- !u!1 &207688011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207688013}
+  - component: {fileID: 207688012}
+  m_Layer: 0
+  m_Name: Schriftverwalter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &207688012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207688011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaffa034e6fd34c0587d579f1976ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTMP_FontAsset_ItimRegularSDF: {fileID: 11400000, guid: 4e0c537f1c1ae475da9337f506e0ba9b, type: 2}
+  mTMP_FontAsset_DancingScript_VariableFont_wght_SDF: {fileID: 11400000, guid: 52a58a3f3e2704ec5b8c27ad23c81024, type: 2}
+  mTMP_FontAsset_FFjallaOne_Regular_SDF: {fileID: 11400000, guid: 0884987f5e3684ce88b60a1dddc61c58, type: 2}
+  mTMP_FontAsset_IBMPlexSans_Regular_SDF: {fileID: 11400000, guid: ee202486dddcb4be69203cbd86506cd6, type: 2}
+  mTMP_FontAsset_PlayfairDisplay_VariableFont_wght_SDF: {fileID: 11400000, guid: b0315fa401e8149cf9308e2246df238a, type: 2}
+--- !u!4 &207688013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207688011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1512, y: 3513.8882, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228703359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1633,7 @@ MonoBehaviour:
   mScreenHeight: 0
   mInputFieldUeberschrift_RectTransform: {fileID: 50686377}
   mUeberschriftText: {fileID: 2061223040}
+  mSchriftverwalter: {fileID: 207688012}
   mButton_01_RectTransform: {fileID: 790919839}
   mButton_02_RectTransform: {fileID: 1069728014}
   mButton_03_RectTransform: {fileID: 1784992406}
@@ -1607,6 +1644,52 @@ MonoBehaviour:
   mButton_04_Text: {fileID: 155288812}
   mInputFieldNotiz_RectTransform: {fileID: 662288519}
   mNotizText: {fileID: 958997841}
+--- !u!1 &686268809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686268811}
+  - component: {fileID: 686268810}
+  m_Layer: 0
+  m_Name: ZurueckZurStartszene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &686268810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686268809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1a9e9c644f048efb0b8794d47ab855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSchriftverwalter: {fileID: 207688012}
+  mTextZurueck: {fileID: 182584693}
+--- !u!4 &686268811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686268809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1512, y: 3513.8882, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790919838
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,8 +3463,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 207688013}
   - {fileID: 676526515}
   - {fileID: 1101411972}
   - {fileID: 1194166360}
   - {fileID: 228703362}
   - {fileID: 647134328}
+  - {fileID: 686268811}
