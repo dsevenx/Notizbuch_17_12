@@ -854,6 +854,9 @@ MonoBehaviour:
   mVerticalLayoutGroup: {fileID: 840573267}
   mNotizBuchBL: {fileID: 1433884151}
   mBildaktualisiert: 0
+  mSchriftverwalter: {fileID: 1469902803}
+  mTextNeueNotiz: {fileID: 182584693}
+  mTextEinstellungen: {fileID: 647682280}
 --- !u!4 &655890114
 Transform:
   m_ObjectHideFlags: 0

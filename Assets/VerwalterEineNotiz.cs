@@ -29,6 +29,10 @@ public class EineNotizVerwalter : MonoBehaviour
 
     public NotizBuchBL mNotizBuchBL;
 
+    public TextMeshProUGUI mTextZureuck;
+
+    public Schriftverwalter mSchriftverwalter;
+
     public Boolean mStarterfolgreich = false;
 
     void Start()
@@ -37,7 +41,7 @@ public class EineNotizVerwalter : MonoBehaviour
     }
     void Update()
     {
-        if (mNotizBuchBL.istEingelesen() && !mStarterfolgreich) 
+        if (mNotizBuchBL.istEingelesen() && !mStarterfolgreich)
         {
             mAlleUeberschriften = mNotizBuchBL.LieferUerberschriftenAusString();
 
@@ -48,7 +52,10 @@ public class EineNotizVerwalter : MonoBehaviour
 
             BlendeAlleButtonAus();
             mStarterfolgreich = true;
-        }
+
+            mTextZureuck.font = mSchriftverwalter.LieferFont();
+            mInputFieldUeberschrift_TMP.textComponent.font =  mSchriftverwalter.LieferFont();
+         }
     }
 
     void PopulateOptions(string pText)
@@ -115,7 +122,7 @@ public class EineNotizVerwalter : MonoBehaviour
         string lErsetzteText = mNotizBuchBL.BeachteAbkuerzungen(pText);
         mInputFieldNotiztext_TMP.text = lErsetzteText;
         mInputFieldNotiztext_TMP.caretPosition = lErsetzteText.Length;
-         mInputFieldNotiztext_TMP.stringPosition = lErsetzteText.Length;
+        mInputFieldNotiztext_TMP.stringPosition = lErsetzteText.Length;
         mNotizBuchBL.SetzeTextAktiveNotiz(lErsetzteText);
     }
 }

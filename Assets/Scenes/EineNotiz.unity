@@ -1236,6 +1236,8 @@ MonoBehaviour:
   mButton_04: {fileID: 1387287742}
   mButton_04_Text: {fileID: 155288812}
   mNotizBuchBL: {fileID: 1101411971}
+  mTextZureuck: {fileID: 182584693}
+  mSchriftverwalter: {fileID: 207688012}
   mStarterfolgreich: 0
 --- !u!4 &647134328
 Transform:

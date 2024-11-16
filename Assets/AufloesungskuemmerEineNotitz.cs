@@ -54,6 +54,7 @@ public class AufloesungskuemmerEineNotitz : AufloesungskuemmerBase
         mInputFieldNotiz_RectTransform.anchoredPosition = new Vector2(0, mScreenHeight * (-0.0405f));
 
         mUeberschriftText.fontSize = mBasisSchrifthoehe * 1.2f;
+        mUeberschriftText.font = mSchriftverwalter.LieferFont();
         mNotizText.fontSize = mBasisSchrifthoehe * 1.05f;
         mNotizText.font = mSchriftverwalter.LieferFont();
         setzeLinksverschiebung(mNotizText);

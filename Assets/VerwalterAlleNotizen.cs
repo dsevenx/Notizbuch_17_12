@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
+using TMPro;
 
 public class Notizverwalter : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Notizverwalter : MonoBehaviour
     public Boolean mBildaktualisiert = false;
 
     public Schriftverwalter mSchriftverwalter;
+
+    public TextMeshProUGUI mTextNeueNotiz;
+
+    public TextMeshProUGUI mTextEinstellungen;
 
     void Start()
     {
@@ -60,6 +65,8 @@ public class Notizverwalter : MonoBehaviour
 
                 mVerticalLayoutGroup.spacing = mAufloesungskuemmerAlleNotizen.mAbstandzwischenNotizen;
             }
+            mTextNeueNotiz.font = mSchriftverwalter.LieferFont();
+            mTextEinstellungen.font = mSchriftverwalter.LieferFont();
 
             mBildaktualisiert=true;
         }
